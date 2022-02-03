@@ -7,7 +7,7 @@ function ExpenseItem(props) {
     const [title, setTitle] = useState(props.title);
 
     const alertHandler = () => {
-        setTitle('Updated');
+        setTitle('Updated')
     }
 
     return (
