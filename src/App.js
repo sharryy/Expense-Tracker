@@ -27,21 +27,33 @@ const DUMMY_EXPENSES = [
         amount: 450,
         date: new Date(2021, 5, 12),
     },
+    {
+        id: 'e5',
+        title: 'New Book (Paper)',
+        amount: 4523,
+        date: new Date(2019, 5, 12),
+    },
 ];
 
 function App() {
     const [expenses, setExpenses] = useState(DUMMY_EXPENSES);
 
     const expenseDataHandler = expense => {
-        setExpenses((prevExpenses) => {
-            return [expense, ...prevExpenses];
+        setExpenses((previousExpenses) => {
+            return [expense, ...previousExpenses];
         })
+    }
+
+    const onUpdateExpenseHandler = filterYear => {
+        setExpenses(DUMMY_EXPENSES.filter(expense => {
+            return expense.date.getFullYear().toString() === filterYear;
+        }));
     }
 
     return (
         <div>
             <NewExpense onAddExpenseData={expenseDataHandler}/>
-            <Expense items={expenses}/>
+            <Expense items={expenses} onUpdateExpense={onUpdateExpenseHandler}/>
         </div>
     );
 }

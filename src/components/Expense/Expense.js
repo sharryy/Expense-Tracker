@@ -9,6 +9,7 @@ function Expense(props) {
 
     const changeFilterYearHandler = (filterYear) => {
         setFilterYear(filterYear);
+        props.onUpdateExpense(filterYear);
     }
 
     return (
